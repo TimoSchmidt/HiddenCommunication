@@ -14,7 +14,7 @@ node = server.get_objects_node()
 param = node.add_object(addSpace, "Parameters")
 
 # i = 2
-val1 = param.add_variable(addSpace, "Temperature", 0)
+val1 = param.add_variable(addSpace, "Values1", 0)
 val1.set_writable()
 
 # initializing server
