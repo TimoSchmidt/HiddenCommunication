@@ -3,13 +3,25 @@ from opcua.server.user_manager import UserManager
 import datetime
 from random import randint
 import time
+'''
+class SubHandler(object):
 
+    """
+    Subscription Handler. To receive events from server for a subscription
+    """
+
+    def datachange_notification(self, node, val, data):
+        print("Python: New data change event", node, val)
+
+    def event_notification(self, event):
+        print("Python: New event", event)
+'''
 
 server = Server()
-url = "opc.tcp://192.168.0.109:4840"
+url = "opc.tcp://10.0.29.30:4840"
 server.set_endpoint(url)
 print("SUCCESS SERVER CHECKED...SERVER IS LISTING ON:", url)
-server.allow_remote_admin(1)
+#server.allow_remote_admin(1)
 
 name = "OPCSERVER_PARAMS_PI"
 addspace = server.register_namespace(name)
@@ -35,6 +47,11 @@ print("Current Namespace on Server: ", nameSpace[2])
 print("-----------------------------------------------")
 
 while True:
+    '''
+    handler = SubHandler()
+    sub = server.create_subscription(2000, handler)
+    handle = sub.subscribe_data_change(Temp)
+    '''
 
     TIME = datetime.datetime.now()
     temperature = Temp.get_value()
