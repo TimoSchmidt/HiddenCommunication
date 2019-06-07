@@ -6,7 +6,11 @@ import time
 
 
 server = Server()
+<<<<<<< HEAD
+url = "opc.tcp://10.0.21.175:4840"
+=======
 url = "opc.tcp://192.168.0.109:4840"
+>>>>>>> 97fbe576d66cf8b3369f4f410e8c2e3ec7883e47
 server.set_endpoint(url)
 print("SUCCESS SERVER CHECKED...SERVER IS LISTING ON:", url)
 server.allow_remote_admin(1)
@@ -18,8 +22,13 @@ node = server.get_objects_node()
 
 Param = node.add_object(addspace, "Parameters")
 
+<<<<<<< HEAD
+Temp = Param.add_variable(addspace, "TemperatureC", "0")
+TempF = Param.add_variable(addspace, "TemperatureF", "0")
+=======
 Temp = Param.add_variable(addspace, "TemperatureC", 0)
 TempF = Param.add_variable(addspace, "TemperatureF", 0)
+>>>>>>> 97fbe576d66cf8b3369f4f410e8c2e3ec7883e47
 Time = Param.add_variable(addspace, "Time", 0)
 
 Temp.set_writable()
