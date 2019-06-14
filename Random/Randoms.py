@@ -8,6 +8,7 @@ for i in range (10):
 
 var.append('.')
 var.append(',')
+var.append(' ')
 
 file = open("rand.txt", "w")
 file.write("dct = {\n")
@@ -15,9 +16,8 @@ file.write("dct = {\n")
 li = []
 
 for i in var:
-    rand = str(randint(0, 9))
-    rand = rand + str(randint(0, 9))
-    
+    # changed to 3 random numbers
+    rand = str(randint(0, 9)) + str(randint(0, 9)) + str(randint(0, 9))
     li.append(rand)
     file.write("\"" + rand + "\": \"" + i + "\",")
 
@@ -25,10 +25,12 @@ file.write("\n}\n\n")
 
 # Erkennung von Duplikaten
 li.sort()
+'''
 file.write("[")
 for l in li:
     file.write(l + ", ")
 file.write("]\n\n")
+'''
 
 counter = 0
 total = 0
@@ -40,7 +42,7 @@ for j in li:
         file.write(j + ": " + str(counter) + "\n")
         total = total + counter
     counter = 0
-file.write("Total: " + str(total) + "\n")
+file.write("Total duplicates = " + str(total) + "\n")
 
 
 
