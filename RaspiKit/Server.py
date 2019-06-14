@@ -18,7 +18,14 @@ class SubHandler(object):
 '''
 
 server = Server()
+<<<<<<< HEAD
 url = "opc.tcp://10.0.29.30:4840"
+=======
+
+url = "opc.tcp://10.0.21.175:4840"
+=======
+url = "opc.tcp://192.168.0.109:4840"
+>>>>>>> 5cdc7fc953833cafc19f243dbffa378757395d72
 server.set_endpoint(url)
 print("SUCCESS SERVER CHECKED...SERVER IS LISTING ON:", url)
 #server.allow_remote_admin(1)
@@ -30,6 +37,10 @@ node = server.get_objects_node()
 
 Param = node.add_object(addspace, "Parameters")
 
+
+Temp = Param.add_variable(addspace, "TemperatureC", "0")
+TempF = Param.add_variable(addspace, "TemperatureF", "0")
+=======
 Temp = Param.add_variable(addspace, "TemperatureC", 0)
 TempF = Param.add_variable(addspace, "TemperatureF", 0)
 Time = Param.add_variable(addspace, "Time", 0)

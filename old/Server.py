@@ -5,7 +5,7 @@ import time
 
 
 server = Server()
-url = "opc.tcp://127.0.0.1:4840"
+url = "opc.tcp://10.0.29.30:4840"
 server.set_endpoint(url)
 print("[DEBUG] SUCCESS SERVER CHECKED...SERVER IS LISTING ON:", url)
 server.allow_remote_admin(1)

@@ -22,7 +22,7 @@ def truncate(number, decimals):
         factor = float(10**decimals)
         return trunc(number*factor)/factor
 '''    
-url = "opc.tcp://127.0.0.1:4840"
+url = "opc.tcp://10.0.21.175:4840"
 client = Client(url)
 
 client.connect()
@@ -33,21 +33,23 @@ counter = 0
 # helloworld reversed (in order to use pop)
 lst = ["4", "12", "18", "15", "23", "15", "12", "12", 
        "5", "8"]
+
 # yippieyahyeischweinebacke
 lst2 = ["5", "11", "3", "1", "2", "5", "14", "9", "5", "23", "8", "3", "19", 
         "9", "5", "25", "8", "1", "25", "5", "9", "16", "16", "9", "25"]
+
 try:
     while True:
         tempC = client.get_node("ns = 2; i = 2")
         val = truncate(random.uniform(5, 10), 3)
         if(counter is 10 and lst):
-            #tempC.set_value(val + lst.pop())
-            tempC.set_value(val + lst2.pop())
+            tempC.set_value(val + lst.pop())
+            #tempC.set_value(val + lst2.pop())
             counter = 0
         else:
             tempC.set_value(val)
             counter = counter + 1
         print(val)
-        time.sleep(0.5)
+        time.sleep(1)
 finally:
     client.disconnect()
