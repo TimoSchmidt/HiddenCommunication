@@ -5,7 +5,7 @@ import queue
 from math import trunc
 import sys
 
-url = "opc.tcp://127.0.0.1:4840"
+url = "opc.tcp://10.0.30.103:4840"
 client = Client(url)
 
 client.connect()
@@ -18,13 +18,11 @@ dct = {
 
 queueie = queue.Queue()
 
-string = input("Please enter your String: ") # sys.argv[1]
-#string = string + " "
-#print(len(string))
+string = input("Please enter your String: ")
+
 def split(string):
     length = len(string)
     for i in string:
-        #cha = string[i]
         if i in dct:
             var = dct.get(i)
             queueie.put(var[0])
@@ -40,11 +38,9 @@ split(string)
 
 #tmp = client.get_node("ns = 2; i = 2")
 #tmp.set_value("24.871")
-#print(list(queueie.queue))
 
 while True:
     client.connect()
-    #for i in range(0, 1):
     tempC = client.get_node("ns = 2; i = 2")
     val = tempC.get_value()[:-1]
     tmp = queueie.get()
@@ -54,6 +50,21 @@ while True:
     tempC.set_value(res)
     time.sleep(2)
     client.disconnect()
+    ''' alternativ
+    for i in range(3):
+        tempC = client.get_node("ns = 2; i = 2")
+        val = tempC.get_value()[:-1]
+        tmp = queueie.get()
+        res = val + tmp
+        print(res)
+        queueie.put(tmp)
+        tempC.set_value(res)
+        # time.sleep(2) // Original
+        time.sleep(0.65)
+    client.disconnect()
+    time.sleep(8)
+    '''
+
 
    
     
