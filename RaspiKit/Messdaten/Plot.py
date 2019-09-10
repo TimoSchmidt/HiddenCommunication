@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import matplotlib.ticker as ticker
 import numpy as np
 
-x, y = np.loadtxt('2SekundenSenden8SekundenWarten_Null_Weg.txt', delimiter = ' ', unpack = True)
+x, y = np.loadtxt('ServerPrinzipAlle2SekSenden.txt', delimiter = ' ', unpack = True)
 
 '''
 plt.plot(x, y)
@@ -23,7 +23,7 @@ ax.yaxis.set_major_formatter(ticker.FormatStrFormatter('%0.2f'))
 
 plt.xlabel('Zeit in s', fontweight = 'bold')
 plt.ylabel('Temperatur in °C', fontweight = 'bold')
-plt.title('2 Sekunden Senden, 10 Sekunden Warten')
+plt.title('')
 plt.grid(True, linestyle = '--', linewidth = '0.5')
 
 plt.show() # Anzeige am Ende
